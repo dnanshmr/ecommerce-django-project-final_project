@@ -4,9 +4,9 @@ from django.db import models
 from django.urls import reverse
 
 PILIHAN_KATEGORI = (
-    ('S', 'Shirt'),
-    ('SW', 'Sport wear'),
-    ('OW', 'Outwear')
+    ('B', 'Bracelets'),
+    ('N', 'Necklaces'),
+    ('R', 'Rings')
 )
 
 PILIHAN_LABEL = (
