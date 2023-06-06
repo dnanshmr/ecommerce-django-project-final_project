@@ -48,10 +48,11 @@
                     </ul>
 
                     <!-- Search -->
-                    <form class="w-auto py-1" style="max-width: 12rem">
-                        <input type="search" class="form-control rounded-0" placeholder="Search" aria-label="Search">
-                    </form>
-
+                    <div class="mt-3 mb-3">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input type="search" name="search" placeholder="try to search: Rings" class="form-control">
+                        </form>
                 </div>
             </div>
             <!-- Container wrapper -->
