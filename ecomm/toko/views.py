@@ -6,7 +6,8 @@ from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.utils import timezone
 from django.views import generic
 from paypal.standard.forms import PayPalPaymentsForm
-
+from django.views.decorators.csrf import csrf_exempt
+from django_ratelimit.decorators import ratelimit
 
 from .forms import CheckoutForm
 from .models import ProdukItem, OrderProdukItem, Order, AlamatPengiriman, Payment
@@ -115,7 +116,7 @@ class OrderSummaryView(LoginRequiredMixin, generic.TemplateView):
         except ObjectDoesNotExist:
             messages.error(self.request, 'Tidak ada pesanan yang aktif')
             return redirect('/')
-
+        
 def add_to_cart(request, slug):
     if request.user.is_authenticated:
         produk_item = get_object_or_404(ProdukItem, slug=slug)

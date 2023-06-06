@@ -3,6 +3,7 @@ from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
 from django import forms
 from .models import ReviewRating
+from captcha.fields import CaptchaField
 
 PILIHAN_PEMBAYARAN = (
     ('P', 'Paypal'),
@@ -21,3 +22,6 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = ReviewRating
         fields = ['subject', 'review', 'rating']
+
+class CaptchaTestForm(forms.Form):
+    captcha = CaptchaField()

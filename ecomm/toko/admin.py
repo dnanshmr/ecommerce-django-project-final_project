@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import ProdukItem, OrderProdukItem, Order, AlamatPengiriman, Payment, ReviewRating
+from django. views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 class ProdukItemAdmin(admin.ModelAdmin):
     list_display = ['nama_produk','harga', 'harga_diskon', 'slug',
                     'deskripsi', 'gambar', 'label', 'kategori']

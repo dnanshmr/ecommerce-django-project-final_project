@@ -5,6 +5,7 @@
 {% include 'carousel.html' %}
 
 <!--Main layout-->
+{% autoescape off %}
 <main>
     <div class="container">
         <!-- Navbar -->
@@ -127,6 +128,7 @@
         <!-- Pagination -->
     </div>
 </main>
+{% endautoescape %}
 <!--Main layout-->
 {% endblock content %}
 

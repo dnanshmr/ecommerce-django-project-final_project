@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django_countries',
     'crispy_forms',
     'crispy_bootstrap5',
+    'captcha',
 
     'paypal.standard.ipn',
 
@@ -214,3 +215,6 @@ if DEBUG is False:
     PAYPAL_SECRET_ID = env('PAYPAL_LIVE_SECRET_ID')
     PAYPAL_TEST=False
     PAYPAL_RECEIVER_EMAIL = env('PAYPAL_RECEIVER_EMAIL')
+
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
