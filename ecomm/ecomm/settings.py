@@ -109,7 +109,7 @@ WSGI_APPLICATION = 'ecomm.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'migrasi',
+        'NAME': 'migrasi_baru',
         'USER': 'postgres',
         'PASSWORD': '123123',
         'HOST': 'localhost',
