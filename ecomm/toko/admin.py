@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ProdukItem, OrderProdukItem, Order, AlamatPengiriman, Payment
+from .models import ProdukItem, OrderProdukItem, Order, AlamatPengiriman, Payment, ReviewRating
 
 class ProdukItemAdmin(admin.ModelAdmin):
     list_display = ['nama_produk','harga', 'harga_diskon', 'slug',
@@ -17,8 +17,12 @@ class AlamatPengirimanAdmin(admin.ModelAdmin):
 class PaymentAdmin(admin.ModelAdmin):
     list_display = ['user', 'amount', 'timestamp', 'payment_option', 'charge_id']
 
+class ReviewRatingAdmin(admin.ModelAdmin):
+    list_display = ['product', 'user', 'subject', 'review', 'rating', 'status', 'created_at', 'updated_at']
+
 admin.site.register(ProdukItem, ProdukItemAdmin)
 admin.site.register(OrderProdukItem, OrderProdukItemAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(AlamatPengiriman, AlamatPengirimanAdmin)
 admin.site.register(Payment, PaymentAdmin)
+admin.site.register(ReviewRating, ReviewRatingAdmin)

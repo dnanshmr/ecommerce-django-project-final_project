@@ -1,6 +1,8 @@
 from django import forms
 from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
+from django import forms
+from .models import ReviewRating
 
 PILIHAN_PEMBAYARAN = (
     ('P', 'Paypal'),
@@ -14,3 +16,8 @@ class CheckoutForm(forms.Form):
     kode_pos = forms.CharField(widget=forms.TextInput(attrs={'class': 'textinput form-outline', 'placeholder': 'Kode Pos'}))
     simpan_info_alamat = forms.BooleanField(widget=forms.CheckboxInput(), required=False)
     opsi_pembayaran = forms.ChoiceField(widget=forms.RadioSelect(), choices=PILIHAN_PEMBAYARAN)
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = ReviewRating
+        fields = ['subject', 'review', 'rating']
