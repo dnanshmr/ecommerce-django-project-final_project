@@ -8,6 +8,7 @@ from django.views import generic
 from paypal.standard.forms import PayPalPaymentsForm
 from django.views.decorators.csrf import csrf_exempt
 from django_ratelimit.decorators import ratelimit
+from captcha.fields import CaptchaField
 
 from .forms import CheckoutForm
 from .models import ProdukItem, OrderProdukItem, Order, AlamatPengiriman, Payment
@@ -24,6 +25,7 @@ class ProductDetailView(generic.DetailView):
 class CheckoutView(LoginRequiredMixin, generic.FormView):
     def get(self, *args, **kwargs):
         form = CheckoutForm()
+        captcha = CaptchaField()
         try:
             order = Order.objects.get(user=self.request.user, ordered=False)
             if order.produk_items.count() == 0:
@@ -180,7 +182,7 @@ def remove_from_cart(request, slug):
     else:
         return redirect('/accounts/login')
 
-# @csrf_exempt
+@csrf_exempt
 def paypal_return(request):
     if request.user.is_authenticated:
         try:
@@ -209,7 +211,7 @@ def paypal_return(request):
     else:
         return redirect('/accounts/login')
 
-# @csrf_exempt
+@csrf_exempt
 def paypal_cancel(request):
     messages.error(request, 'Pembayaran dibatalkan')
     return redirect('toko:order-summary')
